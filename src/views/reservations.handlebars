@@ -1,0 +1,82 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ate It - Reservations</title>
+    <link rel="stylesheet"  href="site.css">
+</head>
+<body>
+    <h1>List of Reservations</h1>
+
+    <!-- Filter Form -->
+    <form action="/reservations" method="GET">
+        <input type="text" id="name" name="name" style="width:50%; margin-left:10%;" placeholder="Search">
+        <button type="submit" class="small-button">Filter</button>
+    </form>
+    <br>
+
+    <!-- Add Reservation Button -->
+    <button type="button" onclick="window.location.href='/reservations/add'" class="button">Add Reservation</button>
+    <br>
+    <br>
+
+    <!-- Table for displaying reservations -->
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each reservations}}
+            <tr>
+                <td>{{this._doc.name}}</td>
+                <td>{{this._doc.location}}</td>
+           <td>
+  <script>
+    const date = new Date("{{this._doc.date}}"); // Parse the date string
+    const options = { weekday: 'short', day: 'numeric', month: 'short' }; // Format options
+    const formattedDate = date.toLocaleDateString('en-US', options); // Format the date
+    document.write(formattedDate); // Display the formatted date
+  </script>
+</td>
+                <td>{{this._doc.time}}</td>
+                <td>
+                    <!-- Edit button -->
+                    
+                    <!-- Delete form -->
+                    <form id="deleteForm-{{this._doc._id}}" action="/restaurants/delete/{{this._doc._id}}" method="POST" style="display: inline;">
+                <button type="submit">Delete</button>
+            </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+   
+
+    <!-- JavaScript for opening and closing edit form -->
+    <script>
+        function openForm(id, name, location, date, time) {
+            document.getElementById('reservationId').value = id;
+            document.getElementById('reservationName').value = name;
+            document.getElementById('reservationLocation').value = location;
+            document.getElementById('reservationDate').value = date;
+            document.getElementById('reservationTime').value = time;
+            document.getElementById('editForm').style.display = 'block';
+
+            document.getElementById('editForm').style.display = 'block';
+
+        }
+
+        function closeForm() {
+            document.getElementById('editForm').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

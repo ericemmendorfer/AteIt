@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ate It</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Top 10 Restaurants:</h1>
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Rating</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each topRestaurants}}
+        <tr>
+            <td>{{this._doc.name}}</td>
+            <td>{{this._doc.location}}</td>
+            <td>{{this._doc.rating}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <br>
+    <h1>Next 10 Reservations:</h1>
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each topReservations}}
+        <tr>
+            <td>{{this._doc.name}}</td>
+            <td>{{this._doc.location}}</td>
+            <td>
+  <script>
+    const date = new Date("{{this._doc.date}}"); // Parse the date string
+    const options = { weekday: 'short', day: 'numeric', month: 'short' }; // Format options
+    const formattedDate = date.toLocaleDateString('en-US', options); // Format the date
+    document.write(formattedDate); // Display the formatted date
+  </script>
+</td>
+            <td>{{this._doc.time}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <br>
+    <h1>Want to try:</h1>
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each topRestaurants}}
+        <tr>
+            <td>{{this._doc.name}}</td>
+            <td>{{this._doc.location}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>

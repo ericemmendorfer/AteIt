@@ -1,0 +1,102 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ate It</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Add Restaurant</h1>
+    <div class="form-container">
+    <form action="/toVisit/add" method="POST">
+        <input type="text" id="name" name="name" placeholder="Restaurant" required>  
+        <br>
+        <input type="text" id="location" name="location"  placeholder="Location" required>
+        <input type="hidden" id="isRestaurant" name="isRestaurant" value="false">
+        <br>
+        <button type="submit" class="form-button">Submit</button>
+        <br>
+        <br>
+        <button type="button" class="form-button" onclick="window.location.href='/toVisit'">Cancel</button>
+        </form>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1TCdLmoGuDnRkr_7OwouxmPvxtb-Z8bM&libraries=places"></script>
+    
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1TCdLmoGuDnRkr_7OwouxmPvxtb-Z8bM&libraries=places&callback=initAutocomplete" 
+onError="handleError()"></script>    
+      <script>
+        // Function to initialize Google Places Autocomplete
+        // Function to initialize Google Places Autocomplete
+function initAutocomplete() {
+    // Get the input fields for restaurant name and location
+    const nameInput = document.getElementById('name');
+    const locationInput = document.getElementById('location');
+    
+    // Create the Autocomplete objects and bind them to the input fields
+    const nameAutocomplete = new google.maps.places.Autocomplete(nameInput);
+    const locationAutocomplete = new google.maps.places.Autocomplete(locationInput);
+    
+    // Set the types for locationAutocomplete to restrict the results to places
+    locationAutocomplete.setTypes(['geocode']);
+    
+    // Listen for the place_changed event on nameAutocomplete
+    nameAutocomplete.addListener('place_changed', function() {
+        const place = nameAutocomplete.getPlace();
+        if (!place.geometry || !place.geometry.location) {
+            console.error('No geometry or location found for the selected place.');
+            return;
+        }
+        // Set the restaurant name in the name input field
+        document.getElementById('name').value = place.name;
+        // Set the complete address in the location input field
+        document.getElementById('location').value = extractCompleteAddress(place);
+    });
+    
+    // Listen for the place_changed event on locationAutocomplete
+    locationAutocomplete.addListener('place_changed', function() {
+        const place = locationAutocomplete.getPlace();
+        if (!place.geometry || !place.geometry.location) {
+            console.error('No geometry or location found for the selected place.');
+            return;
+        }
+        // Set the formatted address in the location input field
+        document.getElementById('location').value = place.formatted_address;
+    });
+}
+
+// Function to extract complete address from a place object
+function extractCompleteAddress(place) {
+    let address = '';
+
+    // Iterate through address components to construct complete address
+    place.address_components.forEach((component) => {
+        // Append component's long name to address string
+        if (component.types.includes('street_number') || component.types.includes('route')) {
+            address += component.long_name + ' ';
+        } else {
+            address += component.long_name + ', ';
+        }
+    });
+
+    // Remove trailing comma and space
+    address = address.replace(/,\s*$/, '');
+
+    return address;
+}
+
+// Load the Google Places API and initialize Autocomplete on window load
+window.onload = function() {
+    initAutocomplete();
+};
+
+
+        function handleError() {
+            console.error("There was an error loading the Google Maps API.");
+        }
+    </script>
+
+</body>
+</html>
+
+

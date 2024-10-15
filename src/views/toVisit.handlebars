@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ate It</title>
+    <link rel="stylesheet"  href="site.css">
+</head>
+<body>
+    <h1>List of Restaurants</h1>
+    <form action="/toVisit" method="GET">
+        <input type="text" id="name" name="name" style="width:50%; margin-left:10%;" placeholder="Search">
+        <button type="submit" class="small-button">Filter</button>
+    </form>
+    <br>
+    <button type="button" onclick="window.location.href='/toVisit/add'" class="button">Add Restaurant</button>
+    <br>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each destinations}}
+            <tr>
+                <td>{{this._doc.name}}</td>
+                <td>{{this._doc.location}}</td>
+                <td>
+                    <button id="visited" type="button" onclick="this.style.display = 'none'; document.getElementById('visitedForm').style.display = 'inline'; document.getElementById('delete').style.display = 'none';">Visited</button>
+                    <form id="visitedForm" action="/toVisit/visited/{{this._doc._id}}" method="POST" style="display: none;">
+                        <label for="rating">Rating:</label>
+                        <input type="number" id="rating" name="rating" min="1" max="10" required>
+                        <button type="submit">Mark as Visited</button>
+                        <button type="button" onclick="this.parentNode.style.display = 'none'; document.getElementById('visited').style.display = 'inline'; document.getElementById('delete').style.display = 'inline';">Cancel</button>
+                    </form>
+                    <form action="/toVisit/visited/{{this._doc._id}}" method="POST" style="display: none;">
+                        <label for="rating">Rating:</label>
+                        <input type="number" id="rating" name="rating" min="1" max="10" required>
+                        <button type="submit" onclick="visited style = display: inline; document.getElementById('delete').style.display = 'inline';">Mark as Visited</button>
+                    </form>
+                    <form id="deleteForm-{{this._doc._id}}" action="/restaurants/delete/{{this._doc._id}}" method="POST" style="display: inline;">
+                <button type="submit">Delete</button>
+            </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+
+    <script>
+        function openForm(id, name, location) {
+            document.getElementById('restaurantId').value = id;
+            document.getElementById('restaurantName').value = name;
+            document.getElementById('restaurantLocation').value = location;
+            document.getElementById('editForm').style.display = 'block';
+        }
+
+        function closeForm() {
+            document.getElementById('editForm').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

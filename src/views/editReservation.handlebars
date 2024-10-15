@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Reservation</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Edit Reservation</h1>
+    <form action="/reservations/edit/{{reservation._id}}" method="POST">
+        <label for="name">Restaurant Name:</label>
+        <input type="text" id="name" name="name" placeholder="Restaurant Name" value="{{reservation.name}}" required>
+        
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" placeholder="Location" value="{{reservation.location}}" required>
+        
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" value="{{reservation.date}}" required>
+        
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" value="{{reservation.time}}" required>
+
+        <button type="submit">Update</button>
+
+        <button type="button" onclick="window.location.href='/reservations'">Cancel</button>
+
+    </form>
+</body>
+</html>

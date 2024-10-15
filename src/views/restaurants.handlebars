@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ate It</title>
+    <link rel="stylesheet"  href="site.css">
+</head>
+<body>
+    <h1>List of Restaurants</h1>
+    <br>
+    <form action="/restaurants" method="GET" >
+        <input type="text" id="name" name="name" style="width:50%; margin-left:10%;" placeholder="Search">
+        <button type="submit" class="small-button">Filter</button>
+    </form>
+    <br>
+    <button type="button" onclick="window.location.href='/restaurants/add'" class="button" style="display: block;">Add Restaurant</button> 
+    <br>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Rating</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each restaurants}}
+    <tr>
+        <td>{{this._doc.name}}</td>
+        <td>{{this._doc.location}}</td>
+        <td>{{this._doc.rating}}</td>
+        <td>
+             <form id="deleteForm-{{this._doc._id}}" action="/restaurants/delete/{{this._doc._id}}" method="POST" style="display: inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {{/each}}
+</tbody>
+    </table>
+
+
+<script>
+
+function confirmDelete(restaurantId) {
+        if (confirm('Are you sure you want to delete this restaurant?')) {
+            document.getElementById('deleteForm-' + restaurantId).submit();
+        }
+    }
+
+    document.getElementById('cancelButton').addEventListener('click', function() {
+        closeForm();
+    });
+
+    function openForm(id, name, location, rating, order, price, review) {
+        document.getElementById('restaurantId').value = id;
+        document.getElementById('restaurantName').value = name;
+        document.getElementById('restaurantLocation').value = location;
+        document.getElementById('restaurantRating').value = rating;
+        document.getElementById('restaurantOrder').value = order;
+        document.getElementById('restaurantPrice').value = price;
+        document.getElementById('restaurantReview').value = review;
+
+        document.getElementById('editForm').style.display = 'block';
+}
+
+    function closeForm() {
+        document.getElementById('editForm').style.display = 'none';
+    }
+</script>
+
+
+
+
+</body>
+</html>
+

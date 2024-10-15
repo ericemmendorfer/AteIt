@@ -1,0 +1,201 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ate It</title>
+    <div class="topnav">
+        <a class="active" href="/">AteIt</a>
+        <a href="/restaurants">Restaurants</a>
+        <a href="/reservations">Reservations</a>
+        <a href="/map">Map</a>
+         <a href="/toVisit">To Visit</a>
+    </div>
+        <link rel="stylesheet"  href="site.css">
+
+    <style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #182825;
+    padding: 8px;
+    text-align: left;
+    color: #182825; /* Text color */
+}
+
+tr:nth-child(even) {
+    background-color: #E6EBE0; /* Background color for even rows */
+}
+
+th {
+    background-color: #0893a561; /* Background color for table header */
+    color: #182825; /* Text color for table header */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    background: #a79c73bf; /* Background color */
+    background-blend-mode: darken;
+    background-size: cover;
+}
+
+.body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #a79c73bf; /* Background color */
+    color: #182825; /* Text color */
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 12px;
+    padding: 0;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 8px;
+    padding: 0;
+    text-align: center;
+}
+
+.table {
+    display: inline-block;
+    margin: 0;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #0893a5e7; /* Active link background color */
+    color: white;
+}
+
+
+
+
+.button {
+    background-color: #0893a5e7; /* Button background color */
+    border: none;
+    color: white;
+    padding: 12px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    width:50%;
+    margin-left: 25%;
+
+}
+
+.button:hover {
+    background-color: #E6EBE0; /* Hover background color */
+    color: #182825; /* Hover text color */
+}
+
+.small-button {
+    background-color: #0893a5e7; /* Button background color */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.small-button:hover {
+    background-color: #E6EBE0; /* Hover background color */
+    color: #182825; /* Hover text color */
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #E6EBE0; /* Input background color */
+    color: #182825; /* Input text color */
+}
+
+.form-container {
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 8px;
+    display: center;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+.input-container input,select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #E6EBE0; /* Input background color */
+    color: #182825; /* Input text color */
+}
+
+
+
+input[type=submit], input[type=button], .form-button {
+    width: 100%;
+    background-color: #0CA4A5; /* Button background color */
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover, input[type=button]:hover, .form-button:hover {
+    background-color: #E6EBE0; /* Hover background color */
+    color: #182825; /* Hover text color */
+}
+
+label {
+    margin-left: 6px; /* Adjusted margin-left for the label */
+}
+
+
+    </style>
+</head>
+<body>
+		{{{body}}}
+</body>
+</html>
