@@ -1,0 +1,25 @@
+Notes
+
+# ate it
+
+## To Fix:
+
+- [ ]  fix color of markers
+- [ ]  way to open restaurants to see more details
+- [ ]  allow entry for prices that are not full dollars/ round to 2 decimals
+- [ ]  allow editing items in all three list
+- [ ]  fix the display of date and time to make it more simplistic
+
+## To Do:
+
+- [ ]  Create login that allows multiple users
+- [ ]  Create a way of following people
+    - [ ]  decide what they can see
+    - [ ]  what is public versus not
+    - [ ]  maybe a total map of everyone's locations
+    - [ ]  can have everyone's top 10 or something in a different color so it is known
+- [ ]  private/public accounts
+- create login page
+-new page for friends
+-can do based off of entries    
+    -only where they want to go and where they have been
