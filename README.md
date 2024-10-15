@@ -76,9 +76,11 @@ Here's a [complex example from wikipedia](https://upload.wikimedia.org/wiki pedi
   [integrating map database API](https://developers.google.com/maps/documentation/datasets)  
   [location search integration API](https://developers.google.com/maps/documentation)  
 
-## [Link to Initial Main Project File](https://github.com/nyu-csci-ua-0467-001-002-spring-2024/final-project-ericemmendorfer/blob/272d8ab0b04b4545daf87b7117bf2cf44769c5bb/app.mjs) 
 
-## Research Topics
+## Class Related
+[Link to Initial Main Project File](https://github.com/nyu-csci-ua-0467-001-002-spring-2024/final-project-ericemmendorfer/blob/272d8ab0b04b4545daf87b7117bf2cf44769c5bb/app.mjs) 
+
+### Research Topics
 * (6 points) React 
   * making a cleaner looking user interface
 
