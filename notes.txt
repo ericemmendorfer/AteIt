@@ -1,0 +1,3 @@
+notes.txt
+
+Google API key = AIzaSyD1TCdLmoGuDnRkr_7OwouxmPvxtb-Z8bM
