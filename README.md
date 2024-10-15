@@ -1,5 +1,5 @@
 # Ate It
-TO DO:
+TO DO:  
   Pop up page for clicking on restaurant to see more details  
   Redo look of website make it cleaner  
       Add images of new look into read me  
