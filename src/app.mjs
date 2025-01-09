@@ -1,19 +1,27 @@
 /* eslint-disable prefer-const */
 import express from 'express';
-import { engine } from 'express-handlebars';
+import { engine, ExpressHandlebars } from 'express-handlebars';
 import dotenv from 'dotenv';
 import Restaurant from './db.mjs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 
 dotenv.config();
 
 const app = express();
 
 // Create an Express app
-app.engine('handlebars', engine({ layoutsDir: './views', defaultLayout: 'layout' }));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.engine('handlebars', engine({ 
+    layoutsDir: path.join(__dirname, 'views'), 
+    defaultLayout: 'layout',
+    helpers: {gt : function(a, b) {return a > b;}}
+}));
 app.set('view engine', 'handlebars');
-app.set('views', './views');
-
-
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static('./src'));
 app.use(express.json());
