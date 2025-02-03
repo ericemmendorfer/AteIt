@@ -110,12 +110,10 @@
               marker.setIcon("https://maps.google.com/mapfiles/ms/icons/purple-dot.png");
             } else if ({{this._doc.toVisit}}) {
               marker.setIcon("https://maps.google.com/mapfiles/ms/icons/blue-dot.png");
-            } 
-            
-           if({{this._doc.isRestaurant}}===true){
-                changeMarker(marker, {{this._doc.rating}});
-            
-          }
+            } else {
+              // If not a reservation or to visit, treat as regular restaurant
+              changeMarker(marker, {{this._doc.rating}});
+            }
             
             markers.push(marker);
           } else {
