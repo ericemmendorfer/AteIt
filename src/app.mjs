@@ -59,10 +59,21 @@ app.get('/', async (req, res) => {
       const reservations = await Restaurant.find(filter);
       reservations.sort((a, b) => b.date - a.date);
       const topReservations = reservations.slice(0, 10);
-  
+
+      // Define filter criteria for toVisit
+      filter = { toVisit: true };
+      // Check if there's a query parameter for filtering by name
+      if (req.query.name) {
+        filter.name = { $regex: req.query.name, $options: 'i' };
+      }
+
+      // Retrieve toVisit using the Restaurant model
+      const destinations = await Restaurant.find(filter);
+      destinations.sort((a, b) => b.rating - a.rating);
+      const topDestinations = destinations.slice(0, 10);
 
   
-    res.render('home', { topRestaurants, topReservations });
+    res.render('home', { topRestaurants, topReservations, topDestinations });
   } catch (error) {
     console.error('Error fetching top restaurants:', error);
     res.status(500).send('Internal Server Error');

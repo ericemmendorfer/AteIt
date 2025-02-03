@@ -67,8 +67,12 @@
         </table>
     {{/if}}
     <br>
-    {{#if wantToTry.length}}
-        <h1>Want to try:</h1>
+    {{#if topDestinations.length}}
+        {{#if (gt topDestinations.length 1)}}
+            <h1>{{topDestinations.length}} Top Destinations:</h1>
+        {{else}}
+            <h1> Top Destination:</h1>
+        {{/if}}
         <br>
         <table>
             <thead>
@@ -78,13 +82,11 @@
             </tr>
             </thead>
             <tbody>
-            {{#each wantToTry}}
-            {{#if this._doc.toVisit}}
+            {{#each topDestinations}}
             <tr>
                 <td>{{this._doc.name}}</td>
                 <td>{{this._doc.location}}</td>
             </tr>
-            {{/if}}
             {{/each}}
             </tbody>
         </table>
