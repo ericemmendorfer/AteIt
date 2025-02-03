@@ -299,6 +299,22 @@ app.get('/map', async (req, res) => {
   
 });
 
+//signin
+app.get('/signin', (req, res) => {
+  res.render('signin');
+});
+
+//signup
+app.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
+//guestUser
+app.get('/guestUser', (req, res) => {
+  res.render('guestUser');
+});
+
+
 
 
 
