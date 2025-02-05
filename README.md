@@ -1,11 +1,12 @@
 # Ate It
+Author: Eric Emmendorfer [Contact](mailto:emmendorfer.eric@gmail.com?subject=[AteIt]%20Source%20Han%20Sans)
+
+
 
 (__TODO__)
 - Wireframe/ sitemap  finalize readme
 - User page, photo, num of restaurants in each catagory, friends list follow/friends
 - social and permenantly up coming 2025
-- fix color coordinated markers on map
-- hide reservations/ to visit if does not apply
 - select restaurant for drop down info (personal info possibly friends info)
 - fix look currently ugly
 - three map views community ratings, friends to visit and rated, personal all
@@ -82,7 +83,90 @@ An Example of a Restaurant element:
 7. as a user, I can add reservations, and what time they are to get a reminder
 
 
+## Usage
 
+
+### 1. Download Files
+
+All files needed to run this program locally can be found in the src folder which can be found [here](https://github.com/ericemmendorfer/AteIt/tree/ab560ee13dbbbe3c9d0c7de6c1e4320eb8ff7664/src) 
+
+### 2. Install Dependencies
+
+This program uses the following dependencies 
+  - dotenv
+  - express
+  - express-handlebars
+
+They can be installed using npm by doing the following steps in the terminal:
+    
+  1. Changing location to the appropriate directory:
+        
+  ```
+    cd */src
+  ```
+  2.  Initiallizing the dependencies by creating a package.json
+
+   ```
+    npm init
+   ```
+  4.  Installing the dependencies and adding them to the package.json
+     
+  ```
+  npm install express express-handlebars dotenv
+  ```
+    
+
+    
+
+### 3. Input keys into dotenv
+
+This program requires two keys:
+  - MongoDB key : which can be found or created [here](https://www.mongodb.com/)  
+  - Google Maps API key : which can be found or created [here](https://developers.google.com/maps/documentation/javascript/get-api-key)
+
+The dotenv file should look as follows:
+
+```
+DSN=mongodb+srv:// Your MongoDB key here
+REACT_APP_GOOGLE_MAPS_API_KEY= Your Google Maps API key here
+PORT=3000 //optional to change the port the server runs on 
+```
+
+You can write into this file as follows:
+  Make sure you are in the src directory
+
+```
+cd */src
+```
+Either make a dotenv file or edit a prexisting one:
+
+
+  To check if there is an existing file:
+```
+la -a
+```
+  To create a file:
+```
+touch .env
+```
+
+  To edit an existing one:
+```
+vi .env
+```
+
+
+### 4. Run 
+
+In your terminal change to the appropriate directory
+```
+cd */src
+```
+To run the server locally input
+```
+node app.mjs
+```
+The server should now be live at [https://localhost:3000/](https://localhost:3000/)
 
 
 ## Annotations / References Used
